@@ -12,6 +12,7 @@ const handleUserInput = () => {
     if (key === "\u0003") {
       process.exit();
     } else {
+      connection.write("Say: HELLO");
       connection.write(directions[key]);
     }
   });
