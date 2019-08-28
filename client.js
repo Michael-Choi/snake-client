@@ -2,9 +2,10 @@ const net = require("net");
 
 const connect = function() {
   const conn = net.createConnection({
-    host: "localhost",
+    host: "172.46.1.79",
     port: 50541
   });
+
   conn.setEncoding("utf8");
   conn.on("connect", () => {
     console.log("connection established");
