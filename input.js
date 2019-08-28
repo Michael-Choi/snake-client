@@ -7,13 +7,19 @@ let directions = {
   a: "Move: left",
   d: "Move: right"
 };
+
 const handleUserInput = () => {
+  let interval = setInterval(() => {}, 100);
   stdin.on("data", key => {
+    if (key) {
+      console.log("key was pressed");
+      clearInterval(interval);
+      interval = setInterval(() => {
+        connection.write(directions[key]);
+      }, 100);
+    }
     if (key === "\u0003") {
       process.exit();
-    } else {
-      connection.write("Say: HELLO");
-      connection.write(directions[key]);
     }
   });
 };
